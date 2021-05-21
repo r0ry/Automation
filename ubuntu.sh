@@ -27,12 +27,13 @@ fi
 
 echo "  1. Install ZSH"
 echo "  2. Setup Oh-My-ZSH with themes and plugins"
-echo "  3. Docker"
-echo "  4. Kubernetes"
-echo "  5. VS Code"
+echo "  3. Install Docker"
+echo "  4. Install Kubernetes"
+echo "  5. Setup Kubernetes users and services"
+echo "  6. Install VS Code"
 echo ""
 echo ""
-echo "  6. All"
+echo "  7. All"
 echo "Q to exit"
 while true; do
     read -p "Input: " num
@@ -59,13 +60,15 @@ while true; do
             sudo snap install microk8s --classic
             sudo usermod -a -G microk8s $USER
             sudo chown -f -R $USER ~/.kube
-            su - $USER
+            echo "Please logout for changes to take effect"
+            ;;
+        5) 
             microk8s status --wait-ready
             microk8s enable dashboard dns ingress
             microk8s kubectl get all --all-namespaces
             microk8s dashboard-proxy
             ;;
-        5)
+        6)
             sudo snap install --classic code
             ;;
         q) 
