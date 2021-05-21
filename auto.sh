@@ -25,7 +25,6 @@ if [[ $check == "Y" || $check == "y" ]]
         sudo apt -y install curl > /dev/null 2>&1
 fi
 
-
 echo "  1. Install ZSH"
 echo "  2. Setup Oh-My-ZSH with themes and plugins"
 echo "  3. Install Docker"
