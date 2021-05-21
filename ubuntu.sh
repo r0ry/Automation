@@ -55,6 +55,5 @@ while true; do
             ;;
         4)
             sudo snap install --classic code
-
     esac
 done
