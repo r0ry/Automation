@@ -72,21 +72,17 @@ ZSH_THEME="jonathan"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    adb
     alias-finder
     ansible
     colored-man-pages
     colorize
     common-aliases
-    copydir
-    copyfile
     docker
     dotnet
     extract
     history
     history-substring-search
     jsontools
-    kubectl
     zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
