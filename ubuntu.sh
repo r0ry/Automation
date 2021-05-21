@@ -33,7 +33,6 @@ echo "  5. Setup Kubernetes users and services"
 echo "  6. Install VS Code"
 echo ""
 echo ""
-echo "  7. All"
 echo "Q to exit"
 while true; do
     read -p "Input: " num
@@ -55,6 +54,9 @@ while true; do
             sudo groupadd docker
             sudo usermod -aG docker $USER
             newgrp docker 
+            echo "Installing portainer"
+            docker volume create portainer_data
+            docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
             ;;
         4) 
             sudo snap install microk8s --classic
