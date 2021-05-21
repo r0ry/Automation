@@ -16,8 +16,11 @@ echo "
 ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝        ╚═╝   ╚══════╝                                 
                                                                                      
 "
-echo "Running update"
-sudo apt update 
+echo "Running update & upgrade"
+sudo apt -y update > /dev/null 2>&1
+sudo apt -y upgrade > /dev/null 2>&1
+echo "Installing curl"
+sudo apt -y install curl > /dev/null 2>&1
 
 echo "  1. Oh-My-ZSH"
 echo "  2. Docker"
@@ -26,6 +29,7 @@ echo "  4. VS Code"
 echo ""
 echo ""
 echo "  5. All"
+echo "  Q to exit"
 while true; do
     read -p "Input: " num
     case "$num" in
@@ -47,7 +51,7 @@ while true; do
             sudo snap install microk8s --classic
             sudo usermod -a -G microk8s $USER
             sudo chown -f -R $USER ~/.kube
-            newgrp microk8s
+            su - $USER
             microk8s status --wait-ready
             microk8s enable dashboard dns ingress
             microk8s kubectl get all --all-namespaces
@@ -55,6 +59,10 @@ while true; do
             ;;
         4)
             sudo snap install --classic code
-
+            ;;
+        q) 
+            break;;
+        Q)  
+            break;;
     esac
 done
