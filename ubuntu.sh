@@ -60,9 +60,12 @@ while true; do
         4)
             sudo snap install --classic code
             ;;
+<<<<<<< HEAD
         q) 
             break;;
         Q)  
             break;;
+=======
+>>>>>>> 581569f701eb067d7cfcaf3c3c263d7eaa10589c
     esac
 done
