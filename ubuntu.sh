@@ -16,21 +16,24 @@ echo "
 ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝        ╚═╝   ╚══════╝                                 
                                                                                      
 "
-echo "Running update & upgrade. This may take a while"
-sudo apt -y update > /dev/null 2>&1
-sudo apt -y upgrade > /dev/null 2>&1
-echo "Installing curl"
-sudo apt -y install curl > /dev/null 2>&1
+read -p "Run update & upgrade? This may take a while (Y/N): " check
+if [[ $check == "Y" || $check == "y" ]]
+    then
+        sudo apt -y update > /dev/null 2>&1
+        sudo apt -y upgrade > /dev/null 2>&1
+        echo "Installing curl"
+        sudo apt -y install curl > /dev/null 2>&1
+fi
 
-echo "  1. Oh-My-ZSH"
-echo "  2. Setup ZSH themes and plugins"
+echo "  1. Install ZSH"
+echo "  2. Setup Oh-My-ZSH with themes and plugins"
 echo "  3. Docker"
 echo "  4. Kubernetes"
 echo "  5. VS Code"
 echo ""
 echo ""
 echo "  6. All"
-echo "  Q to exit"
+echo "Q to exit"
 while true; do
     read -p "Input: " num
     case "$num" in
@@ -43,13 +46,11 @@ while true; do
             sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
             cp zshrc ~/.zshrc
             sh -c "$(curl -fsSL https://raw.githubusercontent.com/psprint/zsh-navigation-tools/master/doc/install.sh)"
-            echo "Please logout"
+            echo "Please logout for changes to take effect"
             ;;
         3)  
-            sudo apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-            sudo apt-get update
-            sudo apt-get install docker-ce docker-ce-cli containerd.io
+            sudo apt -y install apt-transport-https ca-certificates curl gnupg lsb-release
+            sudo apt -y install docker.io
             sudo groupadd docker
             sudo usermod -aG docker $USER
             newgrp docker 
