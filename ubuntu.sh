@@ -47,7 +47,7 @@ while true; do
             sudo snap install microk8s --classic
             sudo usermod -a -G microk8s $USER
             sudo chown -f -R $USER ~/.kube
-            newgrp microk8s
+            su - $USER
             microk8s status --wait-ready
             microk8s enable dashboard dns ingress
             microk8s kubectl get all --all-namespaces
@@ -55,6 +55,6 @@ while true; do
             ;;
         4)
             sudo snap install --classic code
-
+            ;;
     esac
 done
