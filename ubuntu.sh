@@ -41,11 +41,15 @@ while true; do
             sudo apt -y install fzf
             chsh -s $(which zsh)
             sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-            cp -i zshrc ~/.zshrc
+            cp zshrc ~/.zshrc
             sh -c "$(curl -fsSL https://raw.githubusercontent.com/psprint/zsh-navigation-tools/master/doc/install.sh)"
+            echo "Please logout"
             ;;
         3)  
             sudo apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+            sudo apt-get update
+            sudo apt-get install docker-ce docker-ce-cli containerd.io
             sudo groupadd docker
             sudo usermod -aG docker $USER
             newgrp docker 
