@@ -83,7 +83,8 @@ plugins=(
     history
     history-substring-search
     jsontools
-    zsh-interactive-cd)
+    zsh-interactive-cd
+    zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
