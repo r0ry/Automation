@@ -41,6 +41,7 @@ while true; do
             sudo apt -y install zsh
             ;;
         2)
+            sudo apt-install curl
             sudo apt -y install fzf
             chsh -s $(which zsh)
             sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
