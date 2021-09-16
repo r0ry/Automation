@@ -110,6 +110,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias connDev10.27.122.79='sshuttle --dns -r root@10.27.122.79 192.168.0.0/16'
+alias conn="sshuttle --dns -r root@10.29.24.16 192.168.0.0/16"
+alias deletenode='find . -name node_modules -type d -prune -exec rm -rf {} +'
 
 
 ZSH_COLORIZE_STYLE="colorful"
